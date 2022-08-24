@@ -18,12 +18,22 @@ app_secret = os.environ["APP_SECRET"]
 user_ids = os.environ["USER_ID"].split("\n")
 template_id = os.environ["TEMPLATE_ID"]
 
+repid_Key = os.environ["RAPID_KEY"]
 
 def get_weather():
-  url = "http://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&city=" + city
-  res = requests.get(url).json()
-  weather = res['data']['list'][0]
-  return weather['weather'], math.floor(weather['temp']), math.floor(weather['high']), math.floor(weather['low'])
+    url = "https://weatherapi-com.p.rapidapi.com/current.json"
+
+    querystring = {"q": "Auckland"}
+
+    headers = {
+        "X-RapidAPI-Key": repidKey,
+        "X-RapidAPI-Host": 'weatherapi-com.p.rapidapi.com'
+    }
+
+    response = json.loads(requests.request("GET", url, headers=headers, params=querystring).text)
+    weather = response['current']['condition']['text']
+    temp = response['current']['temp_c']
+    return weather, temp
 
 def get_count():
   delta = today - datetime.strptime(start_date, "%Y-%m-%d")
@@ -54,8 +64,8 @@ def get_random_color():
 client = WeChatClient(app_id, app_secret)
 
 wm = WeChatMessage(client)
-wea, temperature, highest, lowest = get_weather()
-data = {"weather":{"value":wea,"color":"#737CA1"},"temperature":{"value":temperature,"color":"#728FCE"},"love_days":{"value":get_count(),"color":"#F67280"},"his_birthday_left":{"value":get_his_birthday(),"color":"#98AFC7"},"her_birthday_left":{"value":get_her_birthday(),"color":"#98AFC7"},"words":{"value":"今天也要加油哦！","color":"#F2BB66"},"highest": {"value":highest,"color":get_random_color()},"lowest":{"value":lowest, "color":get_random_color()}}
+wea, temperature = get_weather()
+data = {"weather":{"value":wea,"color":"#737CA1"},"temperature":{"value":temperature,"color":"#728FCE"},"love_days":{"value":get_count(),"color":"#F67280"},"his_birthday_left":{"value":get_his_birthday(),"color":"#98AFC7"},"her_birthday_left":{"value":get_her_birthday(),"color":"#98AFC7"},"words":{"value":"今天也是爱宝贝的一天✌️！","color":"#F2BB66"},"highest": {"value":highest,"color":get_random_color()},"lowest":{"value":lowest, "color":get_random_color()}}
 count = 0
 for user_id in user_ids:
   res = wm.send_template(user_id, template_id, data)
