@@ -31,3 +31,4 @@ jobs:
       HIS_BIRTHDAY: ${{ secrets.HIS_BIRTHDAY }}
       HER_BIRTHDAY: ${{ secrets.HER_BIRTHDAY }}
       CITY: ${{ secrets.CITY }}
+      RAPID_KEY: ${{ secrets.RAPID_KEY }}
