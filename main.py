@@ -26,7 +26,7 @@ def get_weather():
     querystring = {"q": "Auckland"}
 
     headers = {
-        "X-RapidAPI-Key": rapidKey,
+        "X-RapidAPI-Key": rapid_Key,
         "X-RapidAPI-Host": 'weatherapi-com.p.rapidapi.com'
     }
 
