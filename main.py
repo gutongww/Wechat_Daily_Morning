@@ -32,8 +32,8 @@ def get_weather():
     }
 
     response = json.loads(requests.request("GET", url, headers=headers, params=querystring).text)
-    weather = math.floor(float(response['current']['condition']['text']))
-    temp = response['current']['temp_c']
+    weather = response['current']['condition']['text']
+    temp = math.floor(response['current']['temp_c'])
     return weather, temp
 
 def get_count():
