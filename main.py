@@ -66,7 +66,7 @@ client = WeChatClient(app_id, app_secret)
 
 wm = WeChatMessage(client)
 wea, temperature = get_weather()
-data = {"weather":{"value":wea,"color":"#737CA1"},"temperature":{"value":temperature,"color":"#728FCE"},"love_days":{"value":get_count(),"color":"#F67280"},"his_birthday_left":{"value":get_his_birthday(),"color":"#98AFC7"},"her_birthday_left":{"value":get_her_birthday(),"color":"#98AFC7"},"words":{"value":"要加油哦✌️！","color":"#F2BB66"},"highest": {"value":highest,"color":get_random_color()},"lowest":{"value":lowest, "color":get_random_color()}}
+data = {"weather":{"value":wea,"color":"#737CA1"},"temperature":{"value":temperature,"color":"#728FCE"},"love_days":{"value":get_count(),"color":"#F67280"},"his_birthday_left":{"value":get_his_birthday(),"color":"#98AFC7"},"her_birthday_left":{"value":get_her_birthday(),"color":"#98AFC7"},"words":{"value":"要加油哦✌️！","color":"#F2BB66"}}
 count = 0
 for user_id in user_ids:
   res = wm.send_template(user_id, template_id, data)
