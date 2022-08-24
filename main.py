@@ -18,7 +18,7 @@ app_secret = os.environ["APP_SECRET"]
 user_ids = os.environ["USER_ID"].split("\n")
 template_id = os.environ["TEMPLATE_ID"]
 
-repid_Key = os.environ["RAPID_KEY"]
+rapid_Key = os.environ["RAPID_KEY"]
 
 def get_weather():
     url = "https://weatherapi-com.p.rapidapi.com/current.json"
@@ -26,7 +26,7 @@ def get_weather():
     querystring = {"q": "Auckland"}
 
     headers = {
-        "X-RapidAPI-Key": repidKey,
+        "X-RapidAPI-Key": rapidKey,
         "X-RapidAPI-Host": 'weatherapi-com.p.rapidapi.com'
     }
 
