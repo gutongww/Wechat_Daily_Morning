@@ -28,7 +28,5 @@ jobs:
       TEMPLATE_ID: ${{ secrets.TEMPLATE_ID }}
       USER_ID: ${{ secrets.USER_ID }}
       START_DATE: ${{ secrets.START_DATE }}
-      HIS_BIRTHDAY: ${{ secrets.HIS_BIRTHDAY }}
-      HER_BIRTHDAY: ${{ secrets.HER_BIRTHDAY }}
       CITY: ${{ secrets.CITY }}
       RAPID_KEY: ${{ secrets.RAPID_KEY }}
