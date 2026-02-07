@@ -4,8 +4,12 @@ import random
 import math
 
 # ================= Bark 配置 =================
-BARK_KEY = "oQZ92sPHphNF6D7fNvYawR"
-BARK_API = f"https://api.day.app/{BARK_KEY}"
+BARK_KEYS = [
+    "oQZ92sPHphNF6D7fNvYawR",
+    "uBSGy5uo7yrbb6JknU4B5F"
+]
+
+BARK_APIS = [f"https://api.day.app/{key}" for key in BARK_KEYS]
 
 # ================= 天气配置 =================
 WEATHER_API_KEY = "bb9ebd54256b48f4a8210159260702"
@@ -70,15 +74,16 @@ def birthday_countdown():
         birthday = birthday.replace(year=year + 1)
     return (birthday - today).days
 
-# ================= Bark 推送 =================
+# ================= Bark 推送（双人） =================
 def send_bark(title, body):
-    url = f"{BARK_API}/{title}/{body}"
     params = {
         "sound": "bell",
         "group": "Mio",
         "level": "timeSensitive"
     }
-    requests.get(url, params=params, timeout=10)
+    for api in BARK_APIS:
+        url = f"{api}/{title}/{body}"
+        requests.get(url, params=params, timeout=10)
 
 # ================= 主逻辑 =================
 def main():
