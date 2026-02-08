@@ -1,8 +1,8 @@
 name: morning
 on:
   schedule:
-    # 每天新西兰时间 9 点运行 → UTC 前一天 20 点（夏令时）
-    - cron: '0 22 * * *'
+    # 每天新西兰时间下午 1 点运行 → UTC 00:00（NZ 夏令时时为 13:00，标准时为 14:00）
+    - cron: '0 0 * * *'
   workflow_dispatch:
 
 jobs:
