@@ -5,8 +5,7 @@ import math
 
 # ================= Bark 配置 =================
 BARK_KEYS = [
-    "oQZ92sPHphNF6D7fNvYawR",
-    "uBSGy5uo7yrbb6JknU4B5F"  
+    "oQZ92sPHphNF6D7fNvYawR"
 ]
 
 BARK_APIS = [f"https://api.day.app/{key}" for key in BARK_KEYS]

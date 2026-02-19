@@ -1,8 +1,5 @@
 name: morning
 on:
-  schedule:
-    # 每天新西兰时间下午 1 点运行 → UTC 00:00（NZ 夏令时时为 13:00，标准时为 14:00）
-    - cron: '0 0 * * *'
   workflow_dispatch:
 
 jobs:
@@ -21,7 +18,7 @@ jobs:
           architecture: 'x64'
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: pip install requests
 
       - name: Run Bark script
         run: python main.py
